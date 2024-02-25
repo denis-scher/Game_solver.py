@@ -5,7 +5,12 @@ class Player:
         self.x = 0
         self.y = 0
         self.grid = grid
-        self.setLocation(y,x)
+        self.locCheck = self.setLocation(y,x)
+    
+    def __bool__(self):
+        if self.locCheck == False:
+            return False
+        return True
 
     def getY(self):
         return self.y
@@ -54,17 +59,28 @@ class Player:
                     break
             self.y = self.y - y_add
 
+    def setGrid(self, grid):
+        self.grid = grid
+
     def setLocation(self, y, x):
         if self.grid[y][x] == 1:
             print("The location is invalid")
+            return False
         self.x = x
         self.y = y
         self.grid[y][x] = 1
-        return self.checkOptions()
+        self.checkOptions()
+        return True
+
 
     def getGrid(self):
         return self.grid
 
+    def setX(self,x):
+        self.x = x
+    
+    def setY(self,y):
+        self.y = y
 
     def checkOptions(self):
         up = True
