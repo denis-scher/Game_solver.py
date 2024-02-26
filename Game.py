@@ -6,8 +6,6 @@ _grid = [[0, 1, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]]
-initialGrid = copy.deepcopy(_grid)
-
 
 def solve(grid, options):
     initial_grid = copy.deepcopy(grid)
@@ -25,6 +23,10 @@ def solve(grid, options):
             print(_move)
         else:
             if len(options) == 0:
+                for i in range(5):
+                    print(initial_grid[i])
+                print(initial_y, initial_y)
+                print('\n')
                 return "Not Solved"
             player.setGrid(initial_grid)
             grid = player.getGrid()
@@ -51,9 +53,9 @@ def solve(grid, options):
 
 for i in range(5):
     for j in range(5):
-        _grid = initialGrid
-        player = Player(i,j,_grid)
+        print("new loop")
+        player = Player(i,j,copy.deepcopy(_grid))
         if (bool(player)):
-            print(solve(_grid,player.checkOptions()))
+            print(solve(copy.deepcopy(_grid),player.checkOptions()))
         
 
