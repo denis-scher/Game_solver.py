@@ -39,11 +39,8 @@ def solve(grid, options):
             _move = options[-1]
             player.move(options.pop())
             grid = player.getGrid()
-            for i in range(5):
-                print(grid[i])
-            print(player.getY(), player.getX())
-            print('\n')
-            solve(grid, player.checkOptions())
+            if solve(grid, player.checkOptions()) == "Solved":
+                print(_move)
     if len(options) == 0:
         for i in range(5):
             for j in range(5):
@@ -54,8 +51,9 @@ def solve(grid, options):
 for i in range(5):
     for j in range(5):
         print("new loop")
-        player = Player(i,j,copy.deepcopy(_grid))
+        grid_for_this_loop = copy.deepcopy(_grid)
+        player = Player(i,j,grid_for_this_loop)
         if (bool(player)):
-            print(solve(copy.deepcopy(_grid),player.checkOptions()))
+            print(solve(grid_for_this_loop,player.checkOptions()))
         
 
