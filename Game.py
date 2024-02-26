@@ -55,5 +55,5 @@ for i in range(5):
         player = Player(i,j,_grid)
         if (bool(player)):
             print(solve(_grid,player.checkOptions()))
-        continue
+        
 
