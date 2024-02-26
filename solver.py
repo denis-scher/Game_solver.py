@@ -1,4 +1,4 @@
-
+import copy
 
 class Player:
     def __init__(self, y, x, grid):
@@ -60,7 +60,7 @@ class Player:
             self.y = self.y - y_add
 
     def setGrid(self, grid):
-        self.grid = grid
+        self.grid = copy.deepcopy(grid)
 
     def setLocation(self, y, x):
         if self.grid[y][x] == 1:
